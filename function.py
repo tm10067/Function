@@ -2,8 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 a, b, c, d, e = -12, -18, 5, 10, -30
-x_min = -50
-x_max = 50
+x_min = -10
+x_max = 10
 step = 0.01
 x = np.arange(x_min, x_max, step)
 list_roots = []
@@ -71,7 +71,11 @@ def find_range_ascdesc(x, list_asc, list_desc):
 def draw_func_main(x):
     x_start = x[0]
     asc_switch = 1
-    pos_switch = 1  
+    if func(x_start) > func(x_start + 0.01):
+        asc_switch = 0
+    pos_switch = 1
+    if func(x_start) < 0:
+        pos_switch = 0 
     for i in x:
         if func(i - 0.01) < func(i) > func(i + 0.01):
             if pos_switch == 1:
